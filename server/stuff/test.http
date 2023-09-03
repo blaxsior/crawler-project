@@ -1,0 +1,99 @@
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news032%2c0003246189&pageSize=20&indexSize=10&pageType=more&sort=favorite&page=1&moreParam.next= HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/032/0003246189
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/98.0.4758.102
+### forTest
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=20&indexSize=10&pageType=more&page=1&moreParam.next= HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/000163166
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/98.0.4758.102
+# 페이지 시작은 보통 1 만약 아니면 보정 필요
+### forTest
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=20&indexSize=10&page=2&pageType=more&moreParam.next=1000000000000062ymz0kpdng9 HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/98.0.4758.102
+
+### forTest
+https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&_cv=20230810113455&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=100&indexSize=10&page=3&pageType=more&moreParam.next=0zik0za000001062ykmaw67vhl
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+
+### pageType=more & moreParam.next=~ 만 있어도 페이지 이동은 간단함
+### but, 페이지 모델 이용을 위해 추가적인 요소 가능할 듯
+
+### forTest
+https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&_cv=20230810113455&lang=ko&country=KR&objectId=news005%2C0001631566&categoryId=&pageSize=20&indexSize=10&pageType=more&page=3&moreParam.next=1000001000001062ymudt7f1fz
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### forTest
+https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&_cv=20230810113455&lang=ko&country=KR&objectId=news005%2C0001631566&categoryId=&pageSize=20&indexSize=10&pageType=more&page=3&moreParam.next=1000000000001062yoq34word3
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+
+
+
+### page1
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=5&indexSize=10&page=1&pageType=more&moreParam.next= HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### page1
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=100&pageType=more&moreParam.next=0zik0zi000000062ylgffl4k85 HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### page2
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=100&pageType=more&moreParam.next=0zik0za000001062ykmaw67vhl HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### page1
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=100 HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+
+### page2
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=20&indexSize=10&pageType=more&moreParam.next=1000002000002062ymfebiwbno HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### page3
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=20&indexSize=10&pageType=more&moreParam.next=1000001000001062ymclgwhapj HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### page4
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=20&indexSize=10&pageType=more&moreParam.next=1000000000000062yne0sqtsud HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### page5
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=20&indexSize=10&pageType=more&moreParam.next=1000000000000062ym394coowe HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### page6
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&objectId=news005%2C0001631566&pageSize=20&indexSize=10&pageType=more&moreParam.next=0zik0zb000001062ykmaw67vhl HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631566
+
+### hello
+GET https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=news&pool=cbox5&lang=ko&country=KR&sort=favorite&objectId=news005%2C0001631590&pageSize=100&indexSize=10&pageType=more&page=1 HTTP/1.1
+Referer: https://n.news.naver.com/article/comment/005/0001631590
+
+###
+GET https://n.news.naver.com/article/005/0001631566 HTTP/1.1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/98.0.4758.102
+
+###
+GET https://search.naver.com/search.naver?where=news&sm=tab_pge&query=%EC%9C%A4%EC%84%9D%EC%97%B4&sort=1&photo=0&field=0&pd=4&ds=2023.08.31.10.14&de=2023.09.01.10.14&mynews=1&office_type=1&office_section_code=1&news_office_checked=1032&office_category=0&service_area=0&nso=so:dd,p:1d,a:all&start=11&e=https://search.naver.com/search.naver?where=news&query=%EC%9C%A4%EC%84%9D%EC%97%B4&sm=tab_opt&sort=1&photo=0&field=0&pd=4&ds=2023.08.31.10.14&de=2023.09.01.10.14&docid=&related=0&mynews=1&office_type=1&office_section_code=1&news_office_checked=1032&nso=so%3Add%2Cp%3A1d&is_sug_officeid=0&office_category=0&service_area=0&os=Win32&ln=ko-KR&sr=1920x1080&pr=1&bw=1145&bh=986&c=24&j=N&k=Y&i=&ls=XQVAATUFRPWWI&ect=4g&navigationStart=1693530895540&unloadEventStart=1693530895612&unloadEventEnd=1693530895612&redirectStart=1693530895543&redirectEnd=1693530895566&fetchStart=1693530895566&domainLookupStart=1693530895566&domainLookupEnd=1693530895566&connectStart=1693530895566&connectEnd=1693530895566&requestStart=1693530895568&responseStart=1693530895594&responseEnd=1693530895759&domLoading=1693530895619&domInteractive=1693530896058&domContentLoadedEventStart=1693530896058&domContentLoadedEventEnd=1693530896060&domComplete=1693530896708&loadEventStart=1693530896708&loadEventEnd=1693530896710&first-paint=391&first-contentful-paint=479.5999999642372&pid=inZJZsprvN8ssngvS+ZssssssRh-263410&ssc=tab.news.all&ts=1693530896724&EOU
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/98.0.4758.102
+
+# https://search.naver.com/search.naver?
+# where=news
+# query=%EC%9C%A4%EC%84%9D%EC%97%B4&
+# sm=tab_opt
+# sort=1
+# photo=0
+# field=0
+# pd=5
+# ds=2023.08.31.10.14
+# de=2023.09.01.10.14
+# related=0
+# office_type=1
+# office_section_code=1
+# news_office_checked=1032
+# is_sug_officeid=0
+# office_category=0
+# service_area=0
+
