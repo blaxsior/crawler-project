@@ -7,7 +7,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Keyword } from 'src/keyword/keyword.entity';
+import { Keyword } from '../../keyword/keyword.entity';
 
 @Entity()
 export class Article {
@@ -28,9 +28,6 @@ export class Article {
 
   @Column() // 본문
   body: string;
-
-  // @ManyToOne()
-  // keyword: string;
 
   @OneToMany(() => Comment, (comment) => comment.article, {
     onDelete: 'CASCADE',
