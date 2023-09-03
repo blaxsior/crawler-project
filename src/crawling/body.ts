@@ -14,19 +14,27 @@ export async function getNewsBody(address: string) {
   let title = '';
   let author = '';
   let newsParagraphs: string[] = [];
+  let publishedAt = '';
 
   // title
   const titleElement = root.querySelector('h2.media_end_head_headline');
-  validateNotEmpty(titleElement);
+  validateNotEmpty(titleElement, `ERROR[article.title]: ${address}`);
   title = titleElement.textContent;
+
+  // publishedAt
+  const dateElement = root.querySelector(
+    'em.media_end_head_info_datestamp_time',
+  );
+  validateNotEmpty(dateElement, `ERROR[article.publishedAt]: ${address}`);
+  publishedAt = dateElement.getAttribute('data-date-time');
 
   // author
   const authorElement = root.querySelector('em.media_end_head_journalist_name');
-  validateNotEmpty(authorElement);
+  validateNotEmpty(authorElement, `ERROR[article.author]: ${address}`);
   author = authorElement.textContent;
   // body
   const articleElement = root.querySelector('article');
-  validateNotEmpty(articleElement);
+  validateNotEmpty(articleElement, `ERROR[article.body]: ${address}`);
   //https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
   //TextNode (Node.TEXT_NODE 참고)
   //TextNode의 텍스트만 가져오기
@@ -36,6 +44,7 @@ export async function getNewsBody(address: string) {
 
   return {
     title,
+    publishedAt,
     author,
     body: newsParagraphs,
   };

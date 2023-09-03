@@ -50,7 +50,7 @@ export async function getNewsCommentsObject(
       Referer: newsAddr,
     },
   });
-  if (!req.data) throw new Error('there is no data');
+  if (!req.data) throw new Error(`ERROR[no data]: ${cmaddr}`);
   const json = removeFunctionCall(req.data);
   return JSON.parse(json);
 }
