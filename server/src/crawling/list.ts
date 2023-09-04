@@ -55,7 +55,9 @@ export async function getNewsLinkList(variable_options: {
   const link_list: string[] = [];
   // console.log(baseUrl);
   // console.log(`${baseUrl}&start=${count}`);
-  do { // not found 페이지가 나오기 전까지 계속 탐색하기.
+  // not found 페이지가 나오기 전까지 계속 탐색하기.
+
+  do {
     const req = await axios.get(`${baseUrl}&start=${count}`, {
       headers: {
         'User-Agent':

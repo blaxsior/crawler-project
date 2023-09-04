@@ -23,7 +23,7 @@ export async function getNewsBody(address: string) {
 
   // publishedAt
   const dateElement = root.querySelector(
-    'em.media_end_head_info_datestamp_time',
+    'span.media_end_head_info_datestamp_time',
   );
   validateNotEmpty(dateElement, `ERROR[article.publishedAt]: ${address}`);
   publishedAt = dateElement.getAttribute('data-date-time');
@@ -49,3 +49,4 @@ export async function getNewsBody(address: string) {
     body: newsParagraphs,
   };
 }
+// todo: 문자열 하나하나 단위로 저장

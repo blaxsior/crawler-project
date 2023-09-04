@@ -54,24 +54,29 @@ export async function getNewsCommentsObject(
   const json = removeFunctionCall(req.data);
   return JSON.parse(json);
 }
-
-export async function getNewsComments(newsAddr: string) {
+/**
+ * 기사 url을 받고 해당 기사의 댓글 목록을 반환
+ * @param newsAddr 뉴스 기사 주소. "댓글" 주소 아님.
+ * @param limit 최대로 읽어오는 댓글 페이지 수. default = 10
+ * @returns {Promise<Comment[]>} 댓글 객체 목록
+ */
+export async function getNewsComments(newsAddr: string, limit = 10) {
   const id = getNewsId(newsAddr);
   //objectId, page, moreParam.next는 각 API에서 추가해야 함
   const commentAddr = getBaseUrl(path, options, { objectId: id });
   const comments: Comment[] = [];
   let next = '';
   let page = 1;
-  const limit = 10;
   while (page < limit) {
     const data = await getNewsCommentsObject(newsAddr, commentAddr, page, next);
     const pageCommentList = getNewsCommentsFromCommentsObj(data);
+    console.log(data);
     comments.push(...pageCommentList);
-    page++;
-    next = data.result.morePage.next;
-    if (page === data.result.pageModel.lastPage) {
+    if (page >= data.result.pageModel.lastPage) {
       break;
     }
+    page++;
+    next = data.result.morePage.next;
   }
   return comments;
 }
