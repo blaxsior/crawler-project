@@ -18,7 +18,7 @@ const options: Record<string, string> = {
   pool: 'cbox5',
   lang: 'ko',
   country: 'KR',
-  pageSize: '20',
+  pageSize: '100', // 최대한 요청 줄이기 위해 초기 값을 크게 설정
   indexSize: '10',
   pageType: 'more',
   sort: 'favorite',

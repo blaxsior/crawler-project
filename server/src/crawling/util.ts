@@ -17,14 +17,15 @@ export function getBaseUrl(
   return baseUrl.href;
 }
 // 하루는 24 * 3600 * 1000
-// 00시 기준 시간을 반환
 export function getDateString(date: Date) {
   const year = date.getFullYear();
   const month = date.getMonth() + 1; // 0 ~ 11
   const day = date.getDate();
-  // 시간 & 분은 00:00으로 표기
-
-  return `${year}.${month}.${day}.00.00`;
+  // 시간 & 분의 경우 사용 측에서 큰 의미 X
+  // YYYY.MM.DD 꼴 나와야 함
+  return `${year}.${(month < 10 ? '0' : '') + month}.${
+    (day < 10 ? '0' : '') + day
+  }`;
 }
 
 /**
