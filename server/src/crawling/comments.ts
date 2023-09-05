@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { validateNewsCommentsObj } from '../util/validation';
 import { getBaseUrl } from './util';
+import { setTimeout } from 'timers/promises';
 
 // apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?
 // ticket=news

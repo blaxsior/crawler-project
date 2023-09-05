@@ -48,6 +48,20 @@ type NLListOptions = {
   news_office_checked?: string;
 };
 
+type DelayOptions = {
+  delay_ms?: number;
+  default_delay_ms?: number; // 요청 간 기본 대기 시간
+  stop_creterion?: number;
+  max_wait_ms?: number; // 3번 연속 실패
+};
+
+const default_delayOpt: DelayOptions = {
+  delay_ms: 2500,
+  default_delay_ms: 100, // 요청 간 기본 대기 시간
+  stop_creterion: 10,
+  max_wait_ms: 10000, // 3번 연속 실패
+};
+
 /**
  * @param options 추가적으로 필요한 옵션
  * @param delay_ms 조건이 발생할 때 대기하는 시간
@@ -55,11 +69,14 @@ type NLListOptions = {
  */
 export async function getNewsLinkList(
   variable_options: NLListOptions,
-  delay_ms = 2500,
-  stop_creterion = 10,
-  max_wait_ms = delay_ms * 4, // 3번 연속 실패
+  delayOptions: DelayOptions = {},
 ) {
+  const { default_delay_ms, delay_ms, max_wait_ms, stop_creterion } = {
+    ...default_delayOpt,
+    ...delayOptions,
+  } satisfies DelayOptions;
   let inner_delay = delay_ms;
+  const sub_delay_ms = delay_ms / 2;
 
   //내부적으로는 start 옵션만 변경됨
   if (variable_options.news_office_checked) {
@@ -80,6 +97,8 @@ export async function getNewsLinkList(
     if (req_count % stop_creterion === 0) {
       // 90개 읽을 때마다 멈춤
       await setTimeoutPromises(inner_delay);
+    } else {
+      setTimeoutPromises(default_delay_ms);
     }
     req_count++; // 한번 읽었다.
     const url = `${baseUrl}&start=${count}`;
@@ -105,7 +124,7 @@ export async function getNewsLinkList(
 
     count += 10;
     if (inner_delay > delay_ms) {
-      max_wait_ms /= 2;
+      inner_delay -= sub_delay_ms;
     }
 
     root = parse(req.data);
