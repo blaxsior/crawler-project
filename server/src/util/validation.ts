@@ -12,7 +12,7 @@ export function validateNewsCommentsObj(data: any) {
     validateNotEmpty(data.result.commentList[0].contents);
     validateNotEmpty(data.result.commentList[0].sympathyCount);
     validateNotEmpty(data.result.commentList[0].antipathyCount);
-
+    validateNotEmpty(data.result.commentList[0].modTime); // 날짜 정보
     // more page는 없을 수도 있음
     validateNotEmpty(data.result.morePage);
     validateNotEmpty(data.result.morePage.next);
