@@ -12,8 +12,8 @@ export async function getNewsBody(address: string) {
   const root = parse(req.data);
 
   let title = '';
-  let author = '';
-  let newsParagraphs: string[] = [];
+  // let author = '';
+  const newsParagraphs: string[] = [];
   let publishedAt = '';
 
   // title
@@ -29,24 +29,30 @@ export async function getNewsBody(address: string) {
   publishedAt = dateElement.getAttribute('data-date-time');
 
   // author
-  const authorElement = root.querySelector('em.media_end_head_journalist_name');
-  validateNotEmpty(authorElement, `ERROR[article.author]: ${address}`);
-  author = authorElement.textContent;
+  // const authorElement = root.querySelector('em.media_end_head_journalist_name');
+  // validateNotEmpty(authorElement, `ERROR[article.author]: ${address}`);
+  // author = authorElement.textContent;
   // body
   const articleElement = root.querySelector('article');
   validateNotEmpty(articleElement, `ERROR[article.body]: ${address}`);
   //https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
   //TextNode (Node.TEXT_NODE 참고)
   //TextNode의 텍스트만 가져오기
-  newsParagraphs = articleElement.childNodes
+  const paragraphs = articleElement.childNodes
     .filter((node) => node.nodeType === 3) // Text 노드는 노드 타입이 3
-    .map((it) => it.textContent.trim());
+    .map((it) => it.textContent);
+
+  for (const paragraph of paragraphs) {
+    if (paragraph.length === 0) continue;
+    const paragraphs = paragraph.split('.').map((it) => it.trim());
+    newsParagraphs.push(...paragraphs);
+  }
 
   return {
     title,
     publishedAt,
-    author,
-    body: newsParagraphs,
+    // author,
+    body: newsParagraphs.filter((it) => it.length > 0),
   };
 }
 // todo: 문자열 하나하나 단위로 저장

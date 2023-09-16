@@ -71,7 +71,6 @@ export async function getNewsComments(newsAddr: string, limit = 10) {
   while (page < limit) {
     const data = await getNewsCommentsObject(newsAddr, commentAddr, page, next);
     const pageCommentList = getNewsCommentsFromCommentsObj(data);
-    console.log(data);
     comments.push(...pageCommentList);
     if (page >= data.result.pageModel.lastPage) {
       break;
@@ -89,6 +88,7 @@ function getNewsCommentsFromCommentsObj(data: any): Comment[] {
     contents: it.contents,
     sympathyCount: it.sympathyCount,
     antipathyCount: it.antipathyCount,
+    date: it.modTime,
   }));
   return commentObjs;
 }
@@ -97,4 +97,5 @@ interface Comment {
   content: string;
   sympathyCount: number;
   antipathyCount: number;
+  date: string;
 }
